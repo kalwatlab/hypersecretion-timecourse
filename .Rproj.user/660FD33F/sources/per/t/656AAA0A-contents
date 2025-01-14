@@ -1,0 +1,84 @@
+# script to replot enrichR GO analysis into a vectorized bar chart for figrue preparation
+
+suppressPackageStartupMessages(library(tidyverse))
+
+WGCNA <- read.delim("data/WGCNA analysis.txt", header=T)
+colnames(WGCNA)
+WGCNA_royalblue <- WGCNA %>% filter(module == "royalblue")
+colnames(WGCNA_royalblue) <- c("module", "gene", "kME_Module")
+
+SW <- read.delim("data/output_SW_optimal_clustering.txt", header=T)
+colnames(SW)
+SW_cl3 <- SW %>% filter(cluster == 3)
+
+Tg <- read.delim("data/output_Tg_optimal_clustering.txt")
+colnames(Tg)
+Tg_cl1 <- Tg %>% filter(cluster == 1)
+
+merged_royalblue_SW_cl3 <- full_join(WGCNA_royalblue, SW_cl3, by = "gene")
+colnames(merged_royalblue_SW_cl3)
+write.csv(merged_royalblue_SW_cl3$gene, "output/merged_genelist_royalblue_SW_cl3.csv")
+
+# Used the combined gene list of royal + SW_cluster_3 to run Enrichr and saved the output to a text file 
+royalblue_cluster3 <- read.delim("data/2024_12_17_Enrichr_GO_Biological_Process_2023_table_SWcl3_WGCNAroyalblue.txt", header=T) # This is the output from enrichr for the combined gene list of royalblue and SW cluster 3
+colnames(royalblue_cluster3)
+royalblue_cluster3 <- royalblue_cluster3 %>%
+  separate(Term, into = c("Term", "GO_ID"), sep = "\\(")
+royalblue_cluster3 <- royalblue_cluster3[, c(1,5,9)]
+royalblue_cluster3$neg_log10FDR <- -log10(royalblue_cluster3$Adjusted.P.value)
+colnames(royalblue_cluster3)
+
+topGO_merged <- royalblue_cluster3 %>%
+  arrange(desc(neg_log10FDR)) %>%  # Sort by Combined.Score in descending order
+  head(10)
+
+# Calculate base font size relative to intended output size
+base_font_size <- 14 * (10/7) * 0.8  # Scaled based on your height of 10 inches
+
+plot <- ggplot(topGO_merged, aes(x = reorder(Term, neg_log10FDR), y = neg_log10FDR, fill = Combined.Score)) +
+  geom_bar(stat = "identity", width = 0.8) +
+  scale_fill_gradient(low = "lightblue", high = "darkblue", 
+                      name = "Score", 
+                      breaks = c(min(topGO_merged$Combined.Score), 
+                                 500,
+                                 max(topGO_merged$Combined.Score)),
+                      labels = function(x) format(round(x, 1), big.mark = ",")) +
+  labs(x = "GO Pathway", y = "-log10(FDR)", 
+       title = "GO Biological Process",
+       subtitle = "WGCNA_royalblue + SW_DPGP_cluster_3") +
+  coord_flip() +
+  scale_y_continuous(expand = c(0, 0)) +
+  theme_minimal() +
+  theme(
+    # Scale font sizes relative to output dimensions
+    axis.text.y = element_text(size = base_font_size),
+    axis.text.x = element_text(size = base_font_size + 2),
+    plot.title = element_text(hjust = 0.5, size = base_font_size + 2, face = "bold"),
+    plot.subtitle = element_text(hjust = 0.5, size = base_font_size, face = "italic"),
+    axis.title = element_text(size = base_font_size),
+    
+    legend.position = "right",
+    legend.title = element_text(size = base_font_size),
+    legend.text = element_text(size = base_font_size - 1),
+    
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.line = element_line(linewidth = 0.5, color = "black"),
+    panel.border = element_rect(color = "black", linewidth = 0.5, fill = NA),
+    
+    # Adjust margins relative to output size
+    plot.margin = margin(t = 20, r = 20, b = 20, l = 120),
+    aspect.ratio = 0.67  # This is 10/15 to match your output dimensions
+  )
+
+print(plot)
+
+ggsave(plot=plot, "output/royalblue + Cluster 3.tiff", dpi=300, width = 7.5, height = 5)
+ggsave(filename = "output/royalblue + Cluster 3.pdf",
+       plot = plot,
+       device = "pdf",
+       width = 15,
+       height = 10,
+       units = "in",
+       dpi = 300,
+       scale = 1)

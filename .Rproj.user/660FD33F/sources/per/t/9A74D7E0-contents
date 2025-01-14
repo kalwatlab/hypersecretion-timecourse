@@ -1,0 +1,273 @@
+# Script for merging WGCNA and DPGP cluster data for upset plotting
+
+##########################################
+##### Load packages
+##########################################
+
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(magrittr))
+suppressPackageStartupMessages(library(readxl))
+suppressPackageStartupMessages(library(ComplexUpset))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(grid))
+suppressPackageStartupMessages(library(gridExtra))
+
+##########################################
+##### Load data and merge/process as needed
+##########################################
+
+# load merged_list_2 which has DPGP, metascape, and TPMs
+merged_list_2 <- read.delim2("output/2024_MIN6_SW_Tg_timecourse_DPGP_metascape_TPMs.tsv", sep = '\t')
+
+# load up WGCNA results
+WGCNA <- read_excel("data/Module_membership_md20_beta12_Kalwatdata_V2.xlsm", sheet = "Module_membership_md20_beta12")
+WGCNA_clean <- WGCNA %>%
+  dplyr::rename("WGCNA_module" = "module",
+         "Gene.Symbol" = "Compound",
+         "WGCNA_module_kME" = "kME_module") 
+
+# load DPGP results
+DPGP_clusters <- read.delim2("data/DPGP_clusters_SW_Tg.tsv")
+
+WGCNA_DPGP_merge <- full_join(DPGP_clusters, WGCNA_clean, by = "Gene.Symbol")
+
+module_counts <- WGCNA_clean %>%
+  count(WGCNA_module)
+print(module_counts)
+print(module_counts$WGCNA_module)
+
+# Create binary format with strict type handling
+df_binary <- WGCNA_DPGP_merge %>%
+  dplyr::select(Gene.Symbol, SW_DPGP_cluster, Tg_DPGP_cluster, WGCNA_module) %>%
+  # Convert to logical first, then to integer
+  mutate(
+    # SW DPGP clusters
+    across(
+      starts_with("SW_DPGP_cluster"),
+      ~replace_na(., -1)  # Replace NAs with -1 temporarily
+    ),
+    across(
+      starts_with("Tg_DPGP_cluster"),
+      ~replace_na(., -1)  # Replace NAs with -1 temporarily
+    ),
+    across(
+      starts_with("WGCNA_module"),
+      ~replace_na(., "none")  # Replace NAs with "none" temporarily
+    )
+  ) %>%
+  mutate(
+    # SW DPGP clusters
+    SW_DPGP_cluster_0 = as.logical(SW_DPGP_cluster == 0),
+    SW_DPGP_cluster_1 = as.logical(SW_DPGP_cluster == 1),
+    SW_DPGP_cluster_2 = as.logical(SW_DPGP_cluster == 2),
+    SW_DPGP_cluster_3 = as.logical(SW_DPGP_cluster == 3),
+    SW_DPGP_cluster_4 = as.logical(SW_DPGP_cluster == 4),
+    SW_DPGP_cluster_5 = as.logical(SW_DPGP_cluster == 5),
+    
+    # Tg DPGP clusters
+    Tg_DPGP_cluster_0 = as.logical(Tg_DPGP_cluster == 0),
+    Tg_DPGP_cluster_1 = as.logical(Tg_DPGP_cluster == 1),
+    Tg_DPGP_cluster_2 = as.logical(Tg_DPGP_cluster == 2),
+    Tg_DPGP_cluster_3 = as.logical(Tg_DPGP_cluster == 3),
+    Tg_DPGP_cluster_4 = as.logical(Tg_DPGP_cluster == 4),
+    Tg_DPGP_cluster_5 = as.logical(Tg_DPGP_cluster == 5),
+    Tg_DPGP_cluster_6 = as.logical(Tg_DPGP_cluster == 6),
+    
+    # WGCNA modules
+    WGCNA_black = as.logical(WGCNA_module == "black"),
+    WGCNA_blue = as.logical(WGCNA_module == "blue"),
+    WGCNA_brown = as.logical(WGCNA_module == "brown"),
+    WGCNA_cyan = as.logical(WGCNA_module == "cyan"),
+    WGCNA_green = as.logical(WGCNA_module == "green"),
+    WGCNA_greenyellow = as.logical(WGCNA_module == "greenyellow"),
+    WGCNA_grey60 = as.logical(WGCNA_module == "grey60"),
+    WGCNA_lightcyan = as.logical(WGCNA_module == "lightcyan"),
+    WGCNA_lightgreen = as.logical(WGCNA_module == "lightgreen"),
+    WGCNA_lightyellow = as.logical(WGCNA_module == "lightyellow"),
+    WGCNA_magenta = as.logical(WGCNA_module == "magenta"),
+    WGCNA_midnightblue = as.logical(WGCNA_module == "midnightblue"),
+    WGCNA_royalblue = as.logical(WGCNA_module == "royalblue"),
+    WGCNA_pink = as.logical(WGCNA_module == "pink"),
+    WGCNA_purple = as.logical(WGCNA_module == "purple"),
+    WGCNA_red = as.logical(WGCNA_module == "red"),
+    WGCNA_salmon = as.logical(WGCNA_module == "salmon"),
+    WGCNA_tan = as.logical(WGCNA_module == "tan"),
+    WGCNA_turquoise = as.logical(WGCNA_module == "turquoise"),
+    WGCNA_yellow = as.logical(WGCNA_module == "yellow")
+  )
+
+# Define binary columns
+binary_columns <- names(df_binary)[grep("^(SW_DPGP_cluster_|Tg_DPGP_cluster_|WGCNA_)", names(df_binary))]
+
+# Remove the cluster_0 columns
+binary_columns <- binary_columns[!binary_columns %in% c("SW_DPGP_cluster_0", "Tg_DPGP_cluster_0")]
+
+# Remove original columns that we don't need anymore
+df_binary <- df_binary %>%
+  dplyr::select(Gene.Symbol, all_of(binary_columns))
+
+# Check for any NA values
+na_check <- colSums(is.na(df_binary[, binary_columns]))
+if(any(na_check > 0)) {
+  print("NA counts in binary columns:")
+  print(na_check[na_check > 0])
+}
+
+##########################################
+##### Define Functions
+##########################################
+
+min_int_size = 3
+
+# Fix the binary_columns definition
+binary_columns <- names(df_binary)[grep("^(SW_DPGP_cluster_|Tg_DPGP_cluster_|WGCNA_)", names(df_binary))]
+# Remove WGCNA_module from binary_columns
+binary_columns <- binary_columns[binary_columns != "WGCNA_module"]
+
+# Function to create enhanced UpSet plot
+create_enhanced_upset <- function(df_binary, binary_columns,
+                                  min_intersection_size = min_int_size,
+                                  width_ratio = 0.2) {
+  # Create custom theme with black axes and no grid
+  publication_theme <- theme_minimal() +
+    theme(
+      text = element_text(size = 12),
+      axis.text = element_text(size = 10, color = "black"),
+      axis.text.x = element_blank(),
+      axis.title = element_text(size = 12, face = "bold", color = "black"),
+      axis.title.x = element_blank(),
+      plot.title = element_text(size = 14, face = "bold"),
+      panel.grid = element_blank(),
+      axis.line = element_line(color = "black", linewidth = 0.5),
+      axis.ticks = element_line(color = "black", linewidth = 0.5),
+      panel.background = element_rect(fill = "white", color = NA)
+    )
+  
+  # Create enhanced UpSet plot
+  complex_upset_plot <- ComplexUpset::upset(
+    data = df_binary,
+    intersect = binary_columns,
+    name = "Gene Set Intersections",
+    min_size = min_intersection_size,
+    min_degree = 2,
+    width_ratio = width_ratio,
+    sort_sets = FALSE,
+    sort_intersections_by = "ratio",
+    set_sizes = FALSE,
+    themes = list(
+      intersections_matrix = publication_theme,
+      overall_sizes = publication_theme,
+      intersection_size = publication_theme
+    ),
+    base_annotations = list(
+      'Intersection ratio' = intersection_ratio(
+        text = list(
+          size = 4,
+          angle = 90,
+          hjust = -0.1,
+          vjust = 0.5
+        )
+      ) +
+        publication_theme +
+        theme(
+          axis.text.y = element_text(size = 8),
+          panel.grid = element_blank(),
+          axis.line.x = element_line(color = "black", linewidth = 0.5)
+        )
+    ),
+    matrix = intersection_matrix(
+      geom = geom_point(size = 3),
+      segment = geom_segment(linewidth = 0.8)
+    ),
+    queries = list(
+      # Color the bars on the ratio plot
+            upset_query(intersect = c("SW_DPGP_cluster_3", "WGCNA_royalblue"), color = NA, fill = "deepskyblue", only_components = 'Intersection ratio'),
+      # Color the dots on the matrix graph
+      upset_query(
+        intersect = c("SW_DPGP_cluster_3", "WGCNA_royalblue"),
+        color = "deepskyblue",
+        fill = "deepskyblue",
+        only_components = 'intersections_matrix'
+      )
+    ),
+    wrap = TRUE
+  )
+  return(complex_upset_plot)
+}
+
+# Function to extract genes from the exact intersections shown in the UpSet plot
+
+get_upset_intersections <- function(df_binary, binary_columns, min_size = min_int_size) {
+  # Initialize results
+  intersection_counts <- data.frame(
+    Sets = character(),
+    Gene_Count = numeric(),
+    Gene_List = character(),
+    stringsAsFactors = FALSE
+  )
+  
+  # Get unique patterns
+  gene_patterns <- df_binary %>%
+    dplyr::select(Gene.Symbol, all_of(binary_columns)) %>%
+    group_by(across(all_of(binary_columns))) %>%
+    summarise(
+      genes = paste(sort(Gene.Symbol), collapse = ", "),
+      count = n(),
+      .groups = 'drop'
+    )
+  
+  # For each pattern
+  for(i in 1:nrow(gene_patterns)) {
+    pattern <- gene_patterns[i,]
+    sets_in_pattern <- names(pattern)[which(unlist(pattern[1,binary_columns]) == TRUE)]
+    
+    if(length(sets_in_pattern) >= 1) {
+      intersection_counts <- rbind(intersection_counts, data.frame(
+        Sets = paste(sort(sets_in_pattern), collapse = " & "),
+        Gene_Count = pattern$count,
+        Gene_List = pattern$genes,
+        stringsAsFactors = FALSE
+      ))
+    }
+  }
+  
+  # Sort by gene count
+  intersection_counts <- intersection_counts %>%
+    arrange(desc(Gene_Count)) %>%
+    filter(Gene_Count >= min_size)
+  
+  # Save individual gene lists
+  cat("Saving gene lists for", nrow(intersection_counts), "intersections...\n")
+  dir.create("output/gene_lists", showWarnings = FALSE, recursive = TRUE)
+  
+  for(i in 1:nrow(intersection_counts)) {
+    clean_name <- gsub(" & ", "_", intersection_counts$Sets[i])
+    clean_name <- gsub("[^[:alnum:]_]", "", clean_name)
+    file_name <- file.path("output/gene_lists", paste0(clean_name, "_genes.txt"))
+    writeLines(unlist(strsplit(intersection_counts$Gene_List[i], ", ")), file_name)
+  }
+  
+  # Save summary
+  write.csv(intersection_counts, "output/intersection_summary.csv", row.names = FALSE)
+  cat("Done! Found", nrow(intersection_counts), "intersections\n")
+  return(intersection_counts)
+}
+
+##########################################
+##### Generate plots
+##########################################
+
+# Create enhanced plot
+enhanced_plot <- create_enhanced_upset(df_binary, binary_columns)
+
+print(enhanced_plot)
+ggsave("output/enhanced_WGCNA_DPGP_upset.svg", 
+       plot = enhanced_plot, 
+       device = "svg", 
+       width = 12, 
+       height = 12, 
+       dpi = 300)
+
+# Get intersection data
+intersection_data <- get_upset_intersections(df_binary, binary_columns) #this function saves the intersection analysis in the output folder

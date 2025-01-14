@@ -1,0 +1,309 @@
+# Script for generating gene expression heatmap from curated genesets
+
+#############################
+# LIBRARIES AND FUNCTIONS
+#############################
+suppressPackageStartupMessages(library(ComplexHeatmap))
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(circlize))
+suppressPackageStartupMessages(library(viridis))
+suppressPackageStartupMessages(library(RColorBrewer))
+
+process_numeric_columns <- function(df) {
+  numeric_cols <- grep("logFC|logCPM|F|PValue|FDR", names(df))
+  df[numeric_cols] <- lapply(df[numeric_cols], as.numeric)
+  return(df)
+}
+
+#############################
+# DATA IMPORT AND PROCESSING
+#############################
+
+genesets <- read.delim2("data/gene_sets_MK_curated_tabdelim_focused.txt") # manually curated gene set lists
+genesets <- genesets[,1:3] # drop the extra column
+
+sum(duplicated(genesets$Gene)) # no duplicate gene rows
+
+# Import and merge expression data
+gene_table <- inner_join(
+  read.delim2("data/final_data_matrix_nocutoffs_SW.txt"),
+  read.delim2("data/final_data_matrix_nocutoffs_Tg.txt"),
+  by = "genes"
+) %>%
+  rename(
+    "logFC_1h_SW" = "logFC.time1h.treatSW",
+    "logFC_2h_SW" = "logFC.time2h.treatSW",
+    "logFC_6h_SW" = "logFC.time6h.treatSW",
+    "logFC_24h_SW" = "logFC.time24h.treatSW",
+    "logCPM_SW" = "logCPM.x",
+    "F_SW" = "F.x",
+    "PValue_SW" = "PValue.x",
+    "FDR_SW" = "FDR.x",
+    "logFC_1h_Tg" = "logFC.time1h.treatTg",
+    "logFC_2h_Tg" = "logFC.time2h.treatTg",
+    "logFC_6h_Tg" = "logFC.time6h.treatTg",
+    "logFC_24h_Tg" = "logFC.time24h.treatTg",
+    "logCPM_Tg" = "logCPM.y",
+    "F_Tg" = "F.y",
+    "PValue_Tg" = "PValue.y",
+    "FDR_Tg" = "FDR.y"
+  ) %>%
+  process_numeric_columns()
+
+# Function to process gene expression data and create categorized dataset
+
+create_categorized_dataset <- function(gene_table, genesets) {
+  
+  # Convert all numeric columns from character to numeric
+  numeric_columns <- grep("logFC|logCPM|F|PValue|FDR", names(gene_table))
+  gene_table[numeric_columns] <- lapply(gene_table[numeric_columns], function(x) as.numeric(x))
+  
+  # Ensure genes column is character
+  gene_table$genes <- as.character(gene_table$genes)
+  genesets$Gene <- as.character(genesets$Gene)
+  
+  # Filter gene_table to only include genes that are in genesets
+  categorized_genes <- gene_table %>%
+    filter(genes %in% genesets$Gene)
+  
+  # Add category information
+  categorized_genes <- categorized_genes %>%
+    left_join(genesets %>% select(Gene, Category_1, Description), by = c("genes" = "Gene"))
+  
+  return(categorized_genes)
+}
+
+# Take the genes from the gene_table and pull the logFC data and merge it with the three categories from genesets.
+categorized_genes <- create_categorized_dataset(gene_table, genesets) 
+
+# Focus the table on only genes that are significantly altered in at least one condition
+categorized_genes_sig <- categorized_genes %>%
+  filter(FDR_SW < 0.05 | FDR_Tg < 0.05) %>%
+  arrange(Category_1)
+
+#############################
+# PREPARE HEATMAP DATA
+#############################
+list(unique(categorized_genes_sig$Category_1))
+# Create a named vector of colors for the pathways
+pathway_colors <- c(
+  "Autophagy" = "#E41A1C",                                      # Red
+  "Beta cell Ca2+ and K+ ion handling" = "#377EB8",            # Blue
+  "Beta cell TFs" = "#4DAF4A",                                 # Green
+  "Beta cell TFs - CHI and MODY" = "#74C476",                 # Lighter Green
+  "Cell death / Survival" = "#984EA3",                        # Purple
+  "Disallowed Beta-cell genes" = "#FF7F00",                   # Orange
+  "Exosome" = "#FDB462",                                      # Light Orange
+  "Glycolysis & TCA cycle" = "#FFFF33",                      # Yellow
+  "Immediate Early Response" = "#A65628",                     # Brown
+  "Insulin Processing & Secretion" = "#F781BF",              # Pink
+  "Insulin Processing & Secretion  - CHI and MODY" = "#FB9A99", # Light Red
+  "Purine Biosynthesis" = "#66C2A5",                         # Turquoise
+  "Redox Stress" = "#FC8D62",                                # Coral
+  "Serine/1C metabolism" = "#8DA0CB",                        # Light Blue
+  "UPR-ER" = "#E78AC3",                                      # Rose
+  "UPR-mito" = "#A6D854",                                    # Light Green
+  "UPR_ATF6" = "#B3CDE3",                                    # Pale Blue
+  "UPR_ERAD" = "#CCEBC5",                                    # Pale Green
+  "UPR_IRE1/XBP1s" = "#DECBE4",                             # Pale Purple
+  "UPR_PERK" = "#FED9A6"                                     # Pale Orange
+)
+
+# Create matrix for SW time course
+sw_matrix <- categorized_genes_sig %>%
+  select(starts_with("logFC") & contains("SW")) %>%
+  as.matrix()
+rownames(sw_matrix) <- categorized_genes_sig$genes
+colnames(sw_matrix) <- c("1h", "2h", "6h", "24h")
+
+# Create matrix for Tg time course
+tg_matrix <- categorized_genes_sig %>%
+  select(starts_with("logFC") & contains("Tg")) %>%
+  as.matrix()
+rownames(tg_matrix) <- categorized_genes_sig$genes
+colnames(tg_matrix) <- c("1h", "2h", "6h", "24h")
+
+# Create annotation for categories with smaller font size
+ha_left = rowAnnotation(
+  Category_1 = categorized_genes_sig$Category_1,
+  show_legend = TRUE,
+  annotation_name_side = "top",
+  gp = gpar(col = NA, fontsize = 6),
+  annotation_label = "Pathway",
+  col = list(Category_1 = pathway_colors),
+  annotation_legend_param = list(
+    Category_1 = list(
+      title = "Pathway",
+      title_gp = gpar(fontsize = 10),
+      labels_gp = gpar(fontsize = 8),
+      title_position = "topcenter",
+      labels_rot = 0,
+      nrow = 7
+    )
+  )
+)
+
+# Create significance indicators
+sw_sig <- ifelse(categorized_genes_sig$FDR_SW < 0.05, "★", "")
+tg_sig <- ifelse(categorized_genes_sig$FDR_Tg < 0.05, "★", "")
+
+# Custom purple to green
+col_fun = colorRamp2(
+  c(min(c(sw_matrix, tg_matrix)), 0, max(c(sw_matrix, tg_matrix))),
+  c("#762a83", "#f7f7f7", "#1b7837")
+)
+
+# only split by cat 1
+split = factor(categorized_genes_sig$Category_1)
+
+# heatmap creation
+ht_list = Heatmap(sw_matrix,
+                  name = "SW logFC",
+                  col = col_fun,
+                  cluster_rows = TRUE,
+                  cluster_columns = FALSE,
+                  show_row_dend = FALSE,
+                  show_column_dend = FALSE,
+                  row_split = split,
+                  left_annotation = ha_left,
+                  row_names_side = "left",
+                  column_title = "SW",
+                  column_names_rot = 0,
+                  column_names_side = "top",
+                  column_names_centered = TRUE,
+                  row_names_gp = gpar(fontsize = 8),
+                  height = unit(length(categorized_genes_sig$genes) * 12, "points"),
+                  column_names_gp = gpar(fontsize = 10),
+                  width = unit(3, "cm"),
+                  row_gap = unit(5, "mm")) +
+  rowAnnotation(
+    SW_sig = anno_text(sw_sig, 
+                       gp = gpar(fontsize = 10),
+                       just = "center"),
+    show_annotation_name = FALSE,
+    gp = gpar(col = NA),
+    width = unit(2, "mm")
+  ) +
+  Heatmap(tg_matrix,
+          name = "Tg logFC",
+          col = col_fun,
+          cluster_rows = TRUE,
+          cluster_columns = FALSE,
+          show_row_dend = FALSE,
+          show_column_dend = FALSE,
+          row_split = split,
+          column_title = "Tg",
+          show_row_names = FALSE,
+          column_names_rot = 0,
+          column_names_side = "top",
+          column_names_centered = TRUE,
+          column_names_gp = gpar(fontsize = 10),
+          width = unit(3, "cm"),
+          row_gap = unit(5, "mm")) +
+  rowAnnotation(
+    Tg_sig = anno_text(tg_sig, 
+                       gp = gpar(fontsize = 10),
+                       just = "center"),
+    show_annotation_name = FALSE,
+    gp = gpar(col = NA),
+    width = unit(2, "mm")
+  )
+
+# Calculate appropriate PDF dimensions
+pdf_height = (length(categorized_genes_sig$genes) * 12 / 72) + 3  # convert points to inches and add padding
+pdf_width = 12  # standard width, adjust if needed
+
+# Display in R Studio
+draw(ht_list, ht_gap = unit(2, "mm"))
+
+# Save to PDF
+pdf(file = "output/timecourse_heatmap.pdf", height = pdf_height, width = pdf_width)
+draw(ht_list, ht_gap = unit(2, "mm"))
+dev.off()
+
+# After export, use Adobe Illustrator to make final touches, including:
+# 1. Fix the category names and the sizes of the labels, add greek beta, make 2+ superscript, etc.
+# 2. Move the bottom part of the heat map to the right hand side, copy the column labels and paste them. 
+# 3. Move the legend, delete the extra log2FC panel. just call it log2FC.
+
+#############################
+# Compare significant genes between SW and Tg time course matrices
+#############################
+
+# Load required package for enhanced graphics
+library(VennDiagram)
+library(RColorBrewer)
+
+# Create sets of significant genes for each treatment
+sig_SW <- gene_table$genes[
+  gene_table$FDR_SW < 0.05 & 
+    (abs(gene_table$logFC_1h_SW) > 1 |
+       abs(gene_table$logFC_2h_SW) > 1 |
+       abs(gene_table$logFC_6h_SW) > 1 |
+       abs(gene_table$logFC_24h_SW) > 1)
+]
+
+sig_Tg <- gene_table$genes[
+  gene_table$FDR_Tg < 0.05 & 
+    (abs(gene_table$logFC_1h_Tg) > 1 |
+       abs(gene_table$logFC_2h_Tg) > 1 |
+       abs(gene_table$logFC_6h_Tg) > 1 |
+       abs(gene_table$logFC_24h_Tg) > 1)
+]
+
+# Calculate sizes for Venn diagram
+n_SW <- length(sig_SW)
+n_Tg <- length(sig_Tg)
+n_both <- length(intersect(sig_SW, sig_Tg))
+
+# Set global parameters
+futuraFont <- "sans"
+sw_color <- "#FFB6B6" 
+tg_color <- "#B6FFB6" 
+
+# Create enhanced Venn diagram
+venn.plot <- draw.pairwise.venn(
+  area1 = n_SW,
+  area2 = n_Tg,
+  cross.area = n_both,
+  category = c("SW", "Tg"),
+  
+  # Colors and fill
+  fill = c(sw_color, tg_color),
+  alpha = 0.7,
+  col = "white",           
+  
+  # Text formatting
+  cat.col = "black",
+  cat.cex = 3,               
+  cat.pos = c(180, 180),
+  cat.dist = -0.02, 
+  cat.fontfamily = futuraFont,
+  
+  # Number formatting
+  cex = 2.5,                 
+  fontfamily = futuraFont,
+  fontface = "plain",
+  
+  # Circle properties
+  lwd = 0,  # No borders
+  
+  # Size control
+  width = 0.4,              
+  height = 0.25, 
+  margin = 0.2,
+  euler.d = TRUE,
+  scaled = TRUE
+)
+
+# Save as high-resolution PDF
+pdf(file = "output/significant_genes_venn_enhanced.pdf", 
+    width = 8,
+    height = 5,
+    useDingbats = FALSE)
+grid.draw(venn.plot)
+grid.text("edgeR DEGs\n(|log2FC| > 1, FDR < 0.05)", 
+          x = 0.5, 
+          y = 0.9, 
+          gp = gpar(fontsize = 14, fontface = "bold"))
+dev.off()

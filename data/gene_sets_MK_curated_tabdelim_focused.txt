@@ -1,0 +1,567 @@
+Gene	Category_1	Description	
+Psen1	Autophagy		
+Atg12	Autophagy		
+Atg13	Autophagy		
+Atg14	Autophagy		
+Atg16l1	Autophagy		
+Atg16l2	Autophagy		
+Atg2a	Autophagy		
+Atg3	Autophagy		
+Atg5	Autophagy		
+Atg7	Autophagy		
+Atp6ap2	Autophagy		
+Becn1	Autophagy		
+Calcoco2	Autophagy		
+Epg5	Autophagy		
+Lamp1	Autophagy		
+Pik3c3	Autophagy		
+Rb1cc1	Autophagy		
+Sqstm1	Autophagy		
+Ulk1	Autophagy		
+Ulk2	Autophagy		
+Uvrag	Autophagy		
+Atp2a1	Beta cell Ca2+ and K+ ion handling	sarcoplasmic/endoplasmic reticulum calcium ATPase 1	
+Atp2a3	Beta cell Ca2+ and K+ ion handling	sarcoplasmic/endoplasmic reticulum calcium ATPase 3	
+Itpr1	Beta cell Ca2+ and K+ ion handling	"inositol 1,4,5-trisphosphate receptor type 1"	
+Atp2a2	Beta cell Ca2+ and K+ ion handling	sarcoplasmic/endoplasmic reticulum calcium ATPase 2 	
+Atp2b1	Beta cell Ca2+ and K+ ion handling	plasma membrane calcium-transporting ATPase 1	
+Atp2b2	Beta cell Ca2+ and K+ ion handling	plasma membrane calcium-transporting ATPase 2 	
+Atp2b3	Beta cell Ca2+ and K+ ion handling	plasma membrane calcium-transporting ATPase 3 	
+Atp2b4	Beta cell Ca2+ and K+ ion handling	plasma membrane calcium-transporting ATPase 4 	
+Atp2c1	Beta cell Ca2+ and K+ ion handling	calcium-transporting ATPase type 2C member 1 	
+Cacna1c	Beta cell Ca2+ and K+ ion handling	Cav1.2 L-type caclium channel	
+Itpr2	Beta cell Ca2+ and K+ ion handling	"inositol 1,4,5-trisphosphate receptor type 2"	
+Itpr3	Beta cell Ca2+ and K+ ion handling	"inositol 1,4,5-trisphosphate receptor type 3"	
+Letm1	Beta cell Ca2+ and K+ ion handling	mitochondrial proton/calcium exchanger protein 	
+Mcoln1	Beta cell Ca2+ and K+ ion handling	mucolipin-1	
+Mcoln2	Beta cell Ca2+ and K+ ion handling	mucolipin-2 	
+Mcoln3	Beta cell Ca2+ and K+ ion handling	mucolipin-3	
+Mcu	Beta cell Ca2+ and K+ ion handling	"calcium uniporter protein, mitochondrial "	
+Mcub	Beta cell Ca2+ and K+ ion handling	"calcium uniporter regulatory subunit MCUb, mitochondrial"	
+Micu1	Beta cell Ca2+ and K+ ion handling	"calcium uptake protein 1, mitochondrial "	
+Micu2	Beta cell Ca2+ and K+ ion handling	"calcium uptake protein 2, mitochondrial"	
+Micu3	Beta cell Ca2+ and K+ ion handling	"calcium uptake protein 3, mitochondrial"	
+Orai1	Beta cell Ca2+ and K+ ion handling	calcium release-activated calcium channel protein 1	
+Orai2	Beta cell Ca2+ and K+ ion handling	protein orai-2	
+Orai3	Beta cell Ca2+ and K+ ion handling	protein orai-3	
+Pkd2	Beta cell Ca2+ and K+ ion handling	polycystin-2	
+Pkd2l1	Beta cell Ca2+ and K+ ion handling	polycystic kidney disease 2-like 1 protein	
+Ryr1	Beta cell Ca2+ and K+ ion handling	ryanodine receptor 1	
+Ryr2	Beta cell Ca2+ and K+ ion handling	ryanodine receptor 2	
+Ryr3	Beta cell Ca2+ and K+ ion handling	ryanodine receptor 3	
+Slc24a1	Beta cell Ca2+ and K+ ion handling	sodium/potassium/calcium exchanger 1	
+Slc24a2	Beta cell Ca2+ and K+ ion handling	sodium/potassium/calcium exchanger 2 	
+Slc24a3	Beta cell Ca2+ and K+ ion handling	sodium/potassium/calcium exchanger 3 	
+Slc24a4	Beta cell Ca2+ and K+ ion handling	sodium/potassium/calcium exchanger 4 	
+Slc24a5	Beta cell Ca2+ and K+ ion handling	sodium/potassium/calcium exchanger 5 	
+Slc8a1	Beta cell Ca2+ and K+ ion handling	sodium/calcium exchanger 1 	
+Slc8a2	Beta cell Ca2+ and K+ ion handling	sodium/calcium exchanger 2 	
+Slc8a3	Beta cell Ca2+ and K+ ion handling	sodium/calcium exchanger 3	
+Slc8b1	Beta cell Ca2+ and K+ ion handling	mitochondrial sodium/calcium exchanger protein 	
+Smdt1	Beta cell Ca2+ and K+ ion handling	"essential MCU regulator, mitochondrial "	
+Trpc1	Beta cell Ca2+ and K+ ion handling	short transient receptor potential channel 1 	
+Trpc2	Beta cell Ca2+ and K+ ion handling	short transient receptor potential channel 2	
+Trpc3	Beta cell Ca2+ and K+ ion handling	short transient receptor potential channel 3 	
+Trpc4	Beta cell Ca2+ and K+ ion handling	short transient receptor potential channel 4 	
+Trpc5	Beta cell Ca2+ and K+ ion handling	short transient receptor potential channel 5	
+Trpc6	Beta cell Ca2+ and K+ ion handling	short transient receptor potential channel 6 	
+Trpc7	Beta cell Ca2+ and K+ ion handling	short transient receptor potential channel 7 	
+Trpv1	Beta cell Ca2+ and K+ ion handling	transient receptor potential cation channel subfamily V member 1	
+Trpv2	Beta cell Ca2+ and K+ ion handling	transient receptor potential cation channel subfamily V member 2 	
+Trpv3	Beta cell Ca2+ and K+ ion handling	transient receptor potential cation channel subfamily V member 3 	
+Trpv4	Beta cell Ca2+ and K+ ion handling	transient receptor potential cation channel subfamily V member 4	
+Trpv5	Beta cell Ca2+ and K+ ion handling	transient receptor potential cation channel subfamily V member 5	
+Trpv6	Beta cell Ca2+ and K+ ion handling	transient receptor potential cation channel subfamily V member 6	
+Ctnnb1	Beta cell TFs		
+Foxa2	Beta cell TFs - CHI and MODY	"transcription factor; regulates KCNJ11, ABCC8, HADH"	
+Neurod1	Beta cell TFs - CHI and MODY	NeuroD1 (Beta2)	
+Nsd1	Beta cell TFs - CHI and MODY		
+Pdx1	Beta cell TFs - CHI and MODY		
+Bmp5	Beta cell TFs		
+Crtc2	Beta cell TFs		
+Ep300	Beta cell TFs		
+Foxo1	Beta cell TFs		
+Ins1m	Beta cell TFs		
+Isl1	Beta cell TFs		
+Mafa	Beta cell TFs		
+Mafb	Beta cell TFs		
+Mnx1	Beta cell TFs		
+Nkx2-2	Beta cell TFs		
+Nkx6-1	Beta cell TFs		
+Pax6	Beta cell TFs		
+Rfx2	Beta cell TFs		
+Rfx3	Beta cell TFs		
+Rfx6	Beta cell TFs		
+Rreb1	Beta cell TFs		
+Scrt1	Beta cell TFs		
+Tcf7l2	Beta cell TFs		
+Tshz1	Beta cell TFs		
+Ucn3	Beta cell TFs		
+Wnt4	Beta cell TFs		
+Zfp148	Beta cell TFs		
+Mapk8	Cell death / Survival	mitogen-activated protein kinase 8	
+Pmaip1	Cell death / Survival		
+Traf2	Cell death / Survival		
+Bcl2l11	Cell death / Survival		
+Bid	Cell death / Survival		
+Casp3	Cell death / Survival		
+Casp9	Cell death / Survival		
+Dnm1l	Cell death / Survival		
+Lmna	Cell death / Survival		
+Tnfrsf10b	Cell death / Survival		
+Acin1	Cell death / Survival		
+Apc	Cell death / Survival		
+Apip	Cell death / Survival		
+Aven	Cell death / Survival		
+Bad	Cell death / Survival		
+Bax	Cell death / Survival		
+Bcl2l1	Cell death / Survival		
+Birc2	Cell death / Survival		
+Bmf	Cell death / Survival		
+Bmx	Cell death / Survival		
+Casp6	Cell death / Survival		
+Casp7	Cell death / Survival		
+Casp8	Cell death / Survival		
+Cd14	Cell death / Survival		
+Cflar	Cell death / Survival		
+Clspn	Cell death / Survival		
+Cycs	Cell death / Survival		
+Dcc	Cell death / Survival		
+Dffa	Cell death / Survival		
+Dffb	Cell death / Survival		
+Diablo	Cell death / Survival		
+Dsg1a	Cell death / Survival		
+Dsg2	Cell death / Survival		
+Dsg3	Cell death / Survival		
+Dsp	Cell death / Survival		
+Dynll1	Cell death / Survival		
+Dynll2	Cell death / Survival		
+Fadd	Cell death / Survival		
+Fas	Cell death / Survival		
+Fasl	Cell death / Survival		
+Fnta	Cell death / Survival		
+Gas2	Cell death / Survival		
+Gm10053	Cell death / Survival		
+Gsdmd	Cell death / Survival		
+Gsdme	Cell death / Survival		
+Gsn	Cell death / Survival		
+Gzmb	Cell death / Survival		
+H1f0	Cell death / Survival		
+H1f1	Cell death / Survival		
+H1f2	Cell death / Survival		
+H1f4	Cell death / Survival		
+H1f5	Cell death / Survival		
+Hmgb1	Cell death / Survival		
+Hmgb2	Cell death / Survival		
+Kpna1	Cell death / Survival		
+Kpnb1	Cell death / Survival		
+Lmnb1	Cell death / Survival		
+Ly96	Cell death / Survival		
+Mapk1	Cell death / Survival		
+Mapk3	Cell death / Survival		
+Mapt	Cell death / Survival		
+Nmt1	Cell death / Survival		
+Ocln	Cell death / Survival		
+Oma1	Cell death / Survival		
+Opa1	Cell death / Survival		
+Pkp1	Cell death / Survival		
+Plec	Cell death / Survival		
+Ppp3cc	Cell death / Survival		
+Ppp3r1	Cell death / Survival		
+Prkcd	Cell death / Survival		
+Prkcq	Cell death / Survival		
+Ptk2	Cell death / Survival		
+Ripk1	Cell death / Survival		
+Rock1	Cell death / Survival		
+Satb1	Cell death / Survival		
+Septin4	Cell death / Survival		
+Sfn	Cell death / Survival		
+Sorbs2	Cell death / Survival		
+Sptan1	Cell death / Survival		
+Stk24	Cell death / Survival		
+Stk26	Cell death / Survival		
+Ticam1	Cell death / Survival		
+Ticam2	Cell death / Survival		
+Tjp1	Cell death / Survival		
+Tjp2	Cell death / Survival		
+Tlr4	Cell death / Survival		
+Tnfsf10	Cell death / Survival		
+Tradd	Cell death / Survival		
+Vim	Cell death / Survival		
+Xiap	Cell death / Survival		
+Ywhab	Cell death / Survival		
+Ywhae	Cell death / Survival		
+Ywhag	Cell death / Survival		
+Ywhah	Cell death / Survival		
+Ywhaq	Cell death / Survival		
+Ywhaz	Cell death / Survival		
+Hk1	Disallowed Beta-cell genes	Hexokinase 1	
+Slc16a1	Disallowed Beta-cell genes	"monocarboxylate transporter 1 MCT1, ? cell disallowed gene; GoF in promoter to allow expression in beta cells"	
+Acot7	Disallowed Beta-cell genes		
+Arhgdib	Disallowed Beta-cell genes		
+Cat	Disallowed Beta-cell genes		
+Cxcl12	Disallowed Beta-cell genes		
+Hsd11b1	Disallowed Beta-cell genes		
+Igf1	Disallowed Beta-cell genes		
+Igfbp4	Disallowed Beta-cell genes		
+Itih5	Disallowed Beta-cell genes		
+Ldha	Disallowed Beta-cell genes		
+Maf	Disallowed Beta-cell genes		
+Mgll	Disallowed Beta-cell genes		
+Oat	Disallowed Beta-cell genes		
+Pdgfra	Disallowed Beta-cell genes		
+Smad3	Disallowed Beta-cell genes		
+Smoc2	Disallowed Beta-cell genes		
+Yap1	Disallowed Beta-cell genes		
+Zfp36l1	Disallowed Beta-cell genes		
+Zyx	Disallowed Beta-cell genes		
+Aldoa 	Glycolysis & TCA cycle	"aldolase A, fructose-bisphosphate"	
+Aldob 	Glycolysis & TCA cycle	"aldolase B, fructose-bisphosphate"	
+Aldoc 	Glycolysis & TCA cycle	"aldolase C, fructose-bisphosphate"	
+Bpgm 	Glycolysis & TCA cycle	"2,3-bisphosphoglycerate mutase"	
+Eno1 	Glycolysis & TCA cycle	"enolase 1, (alpha)"	
+Eno2 	Glycolysis & TCA cycle	"enolase 2 (gamma, neuronal)"	
+Eno3 	Glycolysis & TCA cycle	"enolase 3 (beta, muscle)"	
+Gapdh 	Glycolysis & TCA cycle	glyceraldehyde-3-phosphate dehydrogenase	
+Gapdhs 	Glycolysis & TCA cycle	"glyceraldehyde-3-phosphate dehydrogenase, spermatogenic"	
+Gpi 	Glycolysis & TCA cycle	glucose-6-phosphate isomerase	
+Hk2 	Glycolysis & TCA cycle	hexokinase 2	
+Hkdc1 	Glycolysis & TCA cycle	hexokinase domain containing 1	
+Pfkfb1 	Glycolysis & TCA cycle	"6-phosphofructo-2-kinase/fructose-2,6-biphosphatase 1"	
+Pfkfb2 	Glycolysis & TCA cycle	"6-phosphofructo-2-kinase/fructose-2,6-biphosphatase 2"	
+Pfkfb3 	Glycolysis & TCA cycle	"6-phosphofructo-2-kinase/fructose-2,6-biphosphatase 3"	
+Pfkfb4 	Glycolysis & TCA cycle	"6-phosphofructo-2-kinase/fructose-2,6-biphosphatase 4"	
+Pfkl 	Glycolysis & TCA cycle	"phosphofructokinase, liver"	
+Pfkm 	Glycolysis & TCA cycle	"phosphofructokinase, muscle"	
+Pfkp 	Glycolysis & TCA cycle	"phosphofructokinase, platelet"	
+Pgam1 	Glycolysis & TCA cycle	phosphoglycerate mutase 1 (brain)	
+Pgam2 	Glycolysis & TCA cycle	phosphoglycerate mutase 2 (muscle)	
+Pgam4 	Glycolysis & TCA cycle	phosphoglycerate mutase family member 4	
+Pgk1 	Glycolysis & TCA cycle	phosphoglycerate kinase 1	
+Pklr 	Glycolysis & TCA cycle	"pyruvate kinase, liver and RBC"	
+Pkm 	Glycolysis & TCA cycle	"pyruvate kinase, muscle"	
+Ppp2ca 	Glycolysis & TCA cycle	"protein phosphatase 2, catalytic subunit, alpha isozyme"	
+Ppp2r1a	Glycolysis & TCA cycle	"protein phosphatase 2, regulatory subunit A, alpha"	
+Ppp2r1b	Glycolysis & TCA cycle	"protein phosphatase 2, regulatory subunit A, beta"	
+Ppp2r5d	Glycolysis & TCA cycle	"protein phosphatase 2, regulatory subunit B', delta"	
+Tpi1 	Glycolysis & TCA cycle	triosephosphate isomerase 1	
+Aco2	Glycolysis & TCA cycle	"aconitase 2, mitochondrial"	
+Acsl3	Glycolysis & TCA cycle	Acly-CoA synthetase 3	
+Acsl4	Glycolysis & TCA cycle	Acly-CoA synthetase 4	
+Adsl1	Glycolysis & TCA cycle	adenylosuccinate lysase	
+Cs	Glycolysis & TCA cycle	citrate synthase	
+Dld	Glycolysis & TCA cycle	dihydrolipoamide dehydrogenase	
+Dlst	Glycolysis & TCA cycle	dihydrolipoamide S-succinyltransferase (E2 component of 2-oxo-glutarate complex)	
+Fh	Glycolysis & TCA cycle	fumarate hydratase	
+Glud2	Glycolysis & TCA cycle		
+Gucy2c	Glycolysis & TCA cycle	guanylate cyclase 2c	
+Idh1	Glycolysis & TCA cycle	isocitrate dehydrogenase cytosolic	
+Idh2	Glycolysis & TCA cycle	"isocitrate dehydrogenase 2 (NADP+), mitochondrial"	
+Idh3a	Glycolysis & TCA cycle	isocitrate dehydrogenase 3 (NAD+) alpha	
+Idh3b	Glycolysis & TCA cycle	isocitrate dehydrogenase 3 (NAD+) beta	
+Idh3g	Glycolysis & TCA cycle	isocitrate dehydrogenase 3 (NAD+) gamma	
+Mdh2	Glycolysis & TCA cycle	"malate dehydrogenase 2, NAD (mitochondrial)"	
+Me3	Glycolysis & TCA cycle	malic enzyme 3	
+Nnt	Glycolysis & TCA cycle	nicotinamide nucleotide transhydrogenase	
+Ogdh	Glycolysis & TCA cycle	oxoglutarate (alpha-ketoglutarate) dehydrogenase (lipoamide)	
+Sdha	Glycolysis & TCA cycle	"succinate dehydrogenase complex, subunit A, flavoprotein (Fp)"	
+Sdhb	Glycolysis & TCA cycle	"succinate dehydrogenase complex, subunit B, iron sulfur (Ip)"	
+Sdhc	Glycolysis & TCA cycle	"succinate dehydrogenase complex, subunit C, integral membrane protein, 15kDa"	
+Sdhd	Glycolysis & TCA cycle	"succinate dehydrogenase complex, subunit D, integral membrane protein"	
+Sucla2	Glycolysis & TCA cycle	"succinate-CoA ligase, ADP-forming, beta subunit"	
+Suclg1	Glycolysis & TCA cycle	"succinate-CoA ligase, alpha subunit"	
+Suclg2	Glycolysis & TCA cycle	"succinate-CoA ligase, GDP-forming, beta subunit"	
+Jun	Immediate Early Response	jun proto-oncogene	
+Atf3	Immediate Early Response		
+Ccl2	Immediate Early Response		
+Bhlhe40	Immediate Early Response		
+Ccn1	Immediate Early Response		
+Ccn2	Immediate Early Response		
+Ccnl1	Immediate Early Response		
+Cebpd	Immediate Early Response		
+Csrnp1	Immediate Early Response		
+Cxcl3	Immediate Early Response		
+Dusp1	Immediate Early Response		
+Dusp5	Immediate Early Response		
+Dusp6	Immediate Early Response		
+Egr1	Immediate Early Response		
+Egr3	Immediate Early Response		
+F3	Immediate Early Response		
+Flg	Immediate Early Response		
+Fos	Immediate Early Response		
+Fosb	Immediate Early Response		
+Gadd45b	Immediate Early Response		
+Gbp1	Immediate Early Response		
+Gem	Immediate Early Response		
+Hbegf	Immediate Early Response		
+Ier3	Immediate Early Response		
+Il6	Immediate Early Response		
+Junb	Immediate Early Response		
+Klf10	Immediate Early Response		
+Klf6	Immediate Early Response		
+Klhl21	Immediate Early Response		
+Ldlr	Immediate Early Response		
+Mcl1	Immediate Early Response		
+Nfkbia	Immediate Early Response		
+Nfkbiz	Immediate Early Response		
+Nr2c2	Immediate Early Response		
+Nr4a1	Immediate Early Response		
+Nr4a2	Immediate Early Response		
+Plau	Immediate Early Response		
+Rcan1	Immediate Early Response		
+Sgk1	Immediate Early Response		
+Slc2a3	Immediate Early Response		
+Srf	Immediate Early Response		
+Tnfaip3	Immediate Early Response		
+Trib1	Immediate Early Response		
+Tsc22d1	Immediate Early Response		
+Zfp36	Immediate Early Response		
+Scgn	Insulin Processing & Secretion		
+Vgf	Insulin Processing & Secretion		
+Doc2B	Insulin Processing & Secretion		
+Napa	Insulin Processing & Secretion		
+Nsf	Insulin Processing & Secretion		
+Stx1A	Insulin Processing & Secretion		
+Stx4	Insulin Processing & Secretion		
+Stxbp1	Insulin Processing & Secretion		
+Stxbp3	Insulin Processing & Secretion		
+Stxbp5	Insulin Processing & Secretion		
+Stxbp5l	Insulin Processing & Secretion		
+Syt4	Insulin Processing & Secretion		
+Syt7	Insulin Processing & Secretion		
+Syt9	Insulin Processing & Secretion		
+Unc13a	Insulin Processing & Secretion		
+Unc13b	Insulin Processing & Secretion		
+Vamp2	Insulin Processing & Secretion		
+Ap3b1	Insulin Processing & Secretion	clathrin adaptor	
+Cdc42	Insulin Processing & Secretion		
+Chga	Insulin Processing & Secretion		
+Chgb	Insulin Processing & Secretion		
+Sec23a	Insulin Processing & Secretion		
+Sec24a	Insulin Processing & Secretion		
+Sec24d	Insulin Processing & Secretion		
+Hsp90b1	Insulin Processing & Secretion	Grp94	
+Ptbp1	Insulin Processing & Secretion		
+Pam	Insulin Processing & Secretion		
+Pcsk1	Insulin Processing & Secretion		
+Pcsk2	Insulin Processing & Secretion		
+Scg5	Insulin Processing & Secretion		
+Rab27A	Insulin Processing & Secretion		
+Rab3A	Insulin Processing & Secretion		
+P4hb	Insulin Processing & Secretion		
+Ssr1	Insulin Processing & Secretion		
+Cdkal1	Insulin Processing & Secretion		
+Cpe	Insulin Processing & Secretion		
+Ddx1	Insulin Processing & Secretion	translation	
+Eif3a	Insulin Processing & Secretion		
+Eif4b	Insulin Processing & Secretion		
+Erc1	Insulin Processing & Secretion		
+Ero1b	Insulin Processing & Secretion	endoplasmic reticulum oxidoreductase 1 beta	
+Ero1lb	Insulin Processing & Secretion		
+Ins2	Insulin Processing & Secretion	Insulin II	
+Slc30a5	Insulin Processing & Secretion	solute carrier family 30 (zinc transporter)..	
+Slc30a8	Insulin Processing & Secretion	solute carrier family 30 (zinc transporter)...	
+Yipf5	Insulin Processing & Secretion	"Yip1 domain family, member 5"	
+Abcc8	Insulin Processing & Secretion  - CHI and MODY	SUR1 KATP subunit	
+Ano1	Insulin Processing & Secretion  - CHI and MODY	"TMEM16A, Ca2+-activated Cl- channel"	
+Cacna1d	Insulin Processing & Secretion  - CHI and MODY	Cav1.3 ?1 subunit	
+Kcnh2	Insulin Processing & Secretion  - CHI and MODY	hERG / Kv11.1	
+Kcnq1	Insulin Processing & Secretion  - CHI and MODY	Kv7.1	
+Appl1	Insulin Processing & Secretion  - CHI and MODY	"Adaptor Protein, Phosphotyrosine Interacting With PH Domain And Leucine Zipper 1"	
+Pgm1	Insulin Processing & Secretion  - CHI and MODY	Phosphoglucomutase 1	
+Gck	Insulin Processing & Secretion  - CHI and MODY	Glucokinase	
+Glud1	Insulin Processing & Secretion  - CHI and MODY	tricarboxylic acid cycle - glutamate -> ?-ketoglutarate	
+Hadh	Insulin Processing & Secretion  - CHI and MODY	inhibits glutamate dehydrogenase; mutation is LoF	
+Adcy7	Insulin Processing & Secretion  - CHI and MODY	Adenylate Cyclase 7	
+Trmt10a	Insulin Processing & Secretion  - CHI and MODY	tRNA Methyltransferase 10A	
+Pmm2	Insulin Processing & Secretion  - CHI and MODY	Phosphomannomutase 2	
+Hnf1a	Insulin Processing & Secretion  - CHI and MODY	Hepatocyte Nuclear Factor 1?	
+Hnf1b	Insulin Processing & Secretion  - CHI and MODY	Hepatocyte Nuclear Factor 1?	
+Hnf4a	Insulin Processing & Secretion  - CHI and MODY	Hepatocyte Nuclear Factor 4?	
+Klf11	Insulin Processing & Secretion  - CHI and MODY	Kruppel-like factor 11	
+Pax4	Insulin Processing & Secretion  - CHI and MODY	Pax4	
+Yars	Insulin Processing & Secretion  - CHI and MODY	Tyrosyl-tRNA Synthetase 1	
+Blk	Insulin Processing & Secretion  - CHI and MODY	"BLK Proto-Oncogene, Src Family Tyrosine Kinase"	
+Cel	Insulin Processing & Secretion  - CHI and MODY	"Carboxyl Ester Lipase, secreted enzyme, cholesterol and vitamin absorption"	
+Eif2s3	Insulin Processing & Secretion  - CHI and MODY	"Eukaryotic Translation Initiation Factor 2 Subunit ?, translation - recruit methionyl-tRNA to ribosome"	
+Glis3	Insulin Processing & Secretion  - CHI and MODY	Transcription Factor	
+Ins	Insulin Processing & Secretion  - CHI and MODY	Insulin I	
+Insr	Insulin Processing & Secretion  - CHI and MODY	insulin receptor	
+Ucp2	Insulin Processing & Secretion  - CHI and MODY	mitochondrial uncoupling protein 2	
+Kcnj11	Insulin Processing & Secretion  - CHI and MODY	Kir6.2 KATP pore-forming subunit	
+Dad1	Cell death / Survival		
+H13	Cell death / Survival		
+Plk	Cell death / Survival		
+Rfc4	Cell death / Survival		
+Ssr4	Cell death / Survival		
+Adsl	Purine Biosynthesis	 Adenylosuccinate lyase	
+Adss	Purine Biosynthesis	 Adenylosuccinate synthetase	
+Ak1	Purine Biosynthesis	 Adenylate kinase 	
+Ampd2	Purine Biosynthesis	 AMP deaminase 2	
+Ampd3	Purine Biosynthesis	 AMP deaminase 3	
+Aprt	Purine Biosynthesis	 Adenine phosphoribosyltransferase	
+Atic	Purine Biosynthesis	 Bifunctional purine biosynthesis protein ATIC	
+Gmps	Purine Biosynthesis	 GMP synthetase	
+Bcl2	Redox Stress	B-cell CLL/lymphoma 2	
+Dusp10	Redox Stress	dual specificity phosphatase 10	
+Elk1	Redox Stress	"ELK1, member of ETS oncogene family"	
+Map2k3	Redox Stress	mitogen-activated protein kinase kinase 3	
+Map2k4	Redox Stress	mitogen-activated protein kinase kinase 4	
+Map2k6	Redox Stress	mitogen-activated protein kinase kinase 6	
+Mapk11	Redox Stress	mitogen-activated protein kinase 11	
+Mapk12	Redox Stress	mitogen-activated protein kinase 12	
+Mapk13	Redox Stress	mitogen-activated protein kinase 13	
+Mapk14	Redox Stress	mitogen-activated protein kinase 14	
+Mapk9	Redox Stress	mitogen-activated protein kinase 9	
+Max	Redox Stress	MYC associated factor X	
+Mef2c	Redox Stress	myocyte enhancer factor 2C	
+Mknk1	Redox Stress	MAP kinase interacting serine/threonine kinase 1	
+Mknk2	Redox Stress	MAP kinase interacting serine/threonine kinase 2	
+Myc	Redox Stress	v-myc avian myelocytomatosis viral oncogene homolog	
+Pla2g4a	Redox Stress	"phospholipase A2, group IVA (cytosolic, calcium-dependent)"	
+Stat1	Redox Stress	"signal transducer and activator of transcription 1, 91kDa"	
+Txn	Redox Stress	thioredoxin	
+Aldh1l2	Serine/1C metabolism	1C metabolism	
+Mthfd1	Serine/1C metabolism	1C metabolism	
+Mthfd2	Serine/1C metabolism	1C metabolism	
+Phgdh	Serine/1C metabolism	de novo serine biosynthesis	
+Psat1	Serine/1C metabolism	de novo serine biosynthesis	
+Psph	Serine/1C metabolism	de novo serine biosynthesis	
+Shmt1	Serine/1C metabolism	serine metablism	
+Shmt2	Serine/1C metabolism	serine metablism	
+Hspa5	UPR_ATF6		
+Atf6	UPR_ATF6		
+Atf6b	UPR_ATF6		
+Creb3l1	UPR_ATF6		
+Creb3l2	UPR_ATF6		
+Creb3l3	UPR_ATF6		
+Dnajc3	UPR_ATF6	p58IPK / ERdj6	
+Dnajb2	UPR_ERAD		
+Dnajc10	UPR_ERAD	ERdj5	
+Amfr	UPR_ERAD		
+Ankzf1	UPR_ERAD		
+Aup1	UPR_ERAD		
+Bag6	UPR_ERAD		
+Brsk2	UPR_ERAD		
+Calr	UPR_ERAD		
+Calr3	UPR_ERAD		
+Calr4	UPR_ERAD		
+Canx	UPR_ERAD		
+Ccdc47	UPR_ERAD		
+Clgn	UPR_ERAD		
+Derl1	UPR_ERAD		
+Derl2	UPR_ERAD		
+Derl3	UPR_ERAD		
+Dnajb12	UPR_ERAD		
+Ecpas	UPR_ERAD		
+Edem1	UPR_ERAD		
+Edem2	UPR_ERAD		
+Edem3	UPR_ERAD		
+Erlec1	UPR_ERAD		
+Erlin1	UPR_ERAD		
+Erlin2	UPR_ERAD		
+Faf1	UPR_ERAD		
+Faf2	UPR_ERAD		
+Fbxo17	UPR_ERAD		
+Fbxo2	UPR_ERAD		
+Fbxo27	UPR_ERAD		
+Fbxo44	UPR_ERAD		
+Fbxo6	UPR_ERAD		
+Foxred2	UPR_ERAD		
+Get4	UPR_ERAD		
+Gmppb	UPR_ERAD		
+Herpud1	UPR_ERAD		
+Herpud2	UPR_ERAD		
+Hm13	UPR_ERAD		
+Jkamp	UPR_ERAD		
+Jkampl	UPR_ERAD		
+Man1a1	UPR_ERAD		
+Man1a2	UPR_ERAD		
+Man1b1	UPR_ERAD		
+Man1c1	UPR_ERAD		
+Marchf6	UPR_ERAD		
+Nccrp1	UPR_ERAD		
+Nploc4	UPR_ERAD		
+Nrros	UPR_ERAD		
+Os9	UPR_ERAD		
+Psmc6	UPR_ERAD		
+Rcn3	UPR_ERAD		
+Rhbdd1	UPR_ERAD		
+Rnf103	UPR_ERAD		
+Rnf121	UPR_ERAD		
+Rnf139	UPR_ERAD		
+Rnf185	UPR_ERAD		
+Rnf5	UPR_ERAD		
+Sdf2l1	UPR_ERAD		
+Sec61b	UPR_ERAD		
+Sec61bl	UPR_ERAD		
+Sel1l	UPR_ERAD		
+Sel1l2	UPR_ERAD		
+Selenos	UPR_ERAD		
+Sgta	UPR_ERAD		
+Stt3b	UPR_ERAD		
+Stub1	UPR_ERAD		
+Syvn1	UPR_ERAD		
+Tmem129	UPR_ERAD		
+Tmem67	UPR_ERAD		
+Tmub1	UPR_ERAD		
+Tmub2	UPR_ERAD		
+Tor1a	UPR_ERAD		
+Trim13	UPR_ERAD		
+Trim25	UPR_ERAD		
+Ube2g2	UPR_ERAD		
+Ube2j1	UPR_ERAD		
+Ube2j2	UPR_ERAD		
+Ube4a	UPR_ERAD		
+Ube4b	UPR_ERAD		
+Ubqln1	UPR_ERAD		
+Ubqln2	UPR_ERAD		
+Ubxn10	UPR_ERAD		
+Ubxn4	UPR_ERAD		
+Ubxn6	UPR_ERAD		
+Ubxn8	UPR_ERAD		
+Ufd1	UPR_ERAD		
+Uggt1	UPR_ERAD		
+Uggt2	UPR_ERAD		
+Umod	UPR_ERAD		
+Usp19	UPR_ERAD		
+Vcp	UPR_ERAD		
+Wfs1	UPR_ERAD		
+Yod1	UPR_ERAD		
+Exosc1	Exosome		
+Exosc2	Exosome		
+Exosc3	Exosome		
+Exosc4	Exosome		
+Exosc5	Exosome		
+Exosc6	Exosome		
+Exosc7	Exosome		
+Exosc8	Exosome		
+Exosc9	Exosome		
+Ppp2cb	UPR_IRE1/XBP1s	"protein phosphatase 2, catalytic subunit, beta isozyme"	
+Dnajb9	UPR_IRE1/XBP1s	ERdj4	
+Ern1	UPR_IRE1/XBP1s	IRE1a	
+Ern2	UPR_IRE1/XBP1s	IRE1b	
+Map3k5	UPR_IRE1/XBP1s		
+Xbp1	UPR_IRE1/XBP1s		
+Eif2ak3	UPR_PERK	PERK	
+Ddit3	UPR_PERK	DNA-damage-inducible transcript 3	
+Atf4	UPR_PERK		
+Eif2a	UPR_PERK		
+Trib3	UPR_PERK		
+Txnip	UPR_PERK		
+Ppp1cc	UPR_PERK		
+Ppp1r15a	UPR_PERK		
+Ppp1r15b	UPR_PERK		
+Manf	UPR_ATF6		
+Creld2	UPR_ATF6		
+Dnajb11	UPR_ERAD		
+Ero1a	UPR_PERK		
+Pdia2	UPR-ER		
+Pdia3	UPR-ER		
+Pdia4	UPR-ER		
+Pdia5	UPR-ER		
+Pdia6	UPR-ER		
+Qrich1	UPR_PERK		
+Atf5	UPR-mito		
+Lonp1	UPR-mito		
+Ubl5	UPR-mito		
